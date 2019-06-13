@@ -1,19 +1,18 @@
-package task3;
+package com.playtika;
 import java.util.Scanner;
 
-public class task3 {
-
+public class Rhombus {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter size :");
         String s = in.nextLine();
-        int result = Integer.parseInt(s);
+        int sideSize = Integer.parseInt(s); //convert string to int or user will see exception after some number was entered
         System.out.println();
 
-        int shiftedSize = result - 1;
-        int columns = result * 2 - 1;
-        for (int i = 0; i < result; i++) {
-            for (int j = 0; j < columns; j++) {
+        int shiftedSize = sideSize - 1;
+        int side = sideSize * 2 - 1;
+        for (int i = 0; i < sideSize; i++) {
+            for (int j = 0; j < side; j++) {
                 if (j == shiftedSize-i || j == shiftedSize+i) {
                     System.out.print("*");
                 } else  {
@@ -23,7 +22,7 @@ public class task3 {
             System.out.println();
         }
         for (int i = 0; i < shiftedSize; i++) {
-            for (int j = 0; j < columns; j++) {
+            for (int j = 0; j < side; j++) {
                 if (j == shiftedSize-(shiftedSize -1 - i) || j == shiftedSize+(shiftedSize -1 - i)) {
                     System.out.print("*");
                 } else  {
@@ -34,5 +33,5 @@ public class task3 {
         }
 
     }
-    }
+}
 
