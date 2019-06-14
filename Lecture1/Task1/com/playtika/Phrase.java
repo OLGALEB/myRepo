@@ -18,13 +18,12 @@ public class Phrase {
         System.out.println("Change: " + input.replace(' ', '*'));// task 1.3
         String strUpper = input.toUpperCase();
         System.out.println ("Upper case: " +strUpper);// task 1.4
-        input.length();
-        if (input.length () < 10)
-        {
+        int maxIndex = 10;
+        if (input.length () < maxIndex) {
             System.out.println("Can not to perform the action - the entered character does not correspond the condition!");
             return;
         }
         System.out.print("Substring: ");
-        System.out.println(input.substring(5, 10)); // task 1.5
+        System.out.println(input.substring(5, maxIndex)); // task 1.5
             }
      }

@@ -5,8 +5,8 @@ public class Rhombus {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter size :");
-        String s = in.nextLine();
-        int sideSize = Integer.parseInt(s); //convert string to int or user will see exception after some number was entered
+        String userInput = in.nextLine();
+        int sideSize = Integer.parseInt(userInput); //convert string to int or user will see exception after some number was entered
         System.out.println();
 
         int shiftedSize = sideSize - 1;
