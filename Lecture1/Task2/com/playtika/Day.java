@@ -1,4 +1,5 @@
 package com.playtika;
+
 import java.util.Scanner;
 
 public class Day {
@@ -10,21 +11,29 @@ public class Day {
         System.out.println();
         String monthString;
         switch (result) {
-            case 1:  monthString = "Monday";
+            case 1:
+                monthString = "Monday";
                 break;
-            case 2:  monthString = "Tuesday";
+            case 2:
+                monthString = "Tuesday";
                 break;
-            case 3:  monthString = "Wednesday";
+            case 3:
+                monthString = "Wednesday";
                 break;
-            case 4:  monthString = "Thursday";
+            case 4:
+                monthString = "Thursday";
                 break;
-            case 5:  monthString = "Friday";
+            case 5:
+                monthString = "Friday";
                 break;
-            case 6:  monthString = "Saturday";
+            case 6:
+                monthString = "Saturday";
                 break;
-            case 7:  monthString = "Sunday";
+            case 7:
+                monthString = "Sunday";
                 break;
-            default: monthString = "Does not exist";
+            default:
+                monthString = "Does not exist";
                 break;
         }
         System.out.println(monthString);

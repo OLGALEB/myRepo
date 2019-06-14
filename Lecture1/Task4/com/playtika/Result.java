@@ -1,4 +1,5 @@
 package com.playtika;
+
 import java.util.Arrays;
 
 public class Result {
@@ -8,17 +9,17 @@ public class Result {
         boolean isSorted = false;
         int resultsBuffer;
         String namesBufffer;
-        while(!isSorted) {
+        while (!isSorted) {
             isSorted = true;
-            for (int i = 0; i < results.length-1; i++) {
-                if(results[i] > results[i+1]){
+            for (int i = 0; i < results.length - 1; i++) {
+                if (results[i] > results[i + 1]) {
                     isSorted = false;
                     resultsBuffer = results[i];
-                    results[i] = results[i+1];
-                    results[i+1] = resultsBuffer;
+                    results[i] = results[i + 1];
+                    results[i + 1] = resultsBuffer;
                     namesBufffer = names[i];
-                    names[i] = names[i+1];
-                    names[i+1] = namesBufffer;
+                    names[i] = names[i + 1];
+                    names[i + 1] = namesBufffer;
                 }
             }
         }

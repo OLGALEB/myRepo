@@ -1,4 +1,5 @@
 package com.playtika;
+
 import java.util.Scanner;
 
 public class Rhombus {
@@ -13,9 +14,9 @@ public class Rhombus {
         int side = sideSize * 2 - 1;
         for (int i = 0; i < sideSize; i++) {
             for (int j = 0; j < side; j++) {
-                if (j == shiftedSize-i || j == shiftedSize+i) {
+                if (j == shiftedSize - i || j == shiftedSize + i) {
                     System.out.print("*");
-                } else  {
+                } else {
                     System.out.print(" ");
                 }
             }
@@ -23,9 +24,9 @@ public class Rhombus {
         }
         for (int i = 0; i < shiftedSize; i++) {
             for (int j = 0; j < side; j++) {
-                if (j == shiftedSize-(shiftedSize -1 - i) || j == shiftedSize+(shiftedSize -1 - i)) {
+                if (j == shiftedSize - (shiftedSize - 1 - i) || j == shiftedSize + (shiftedSize - 1 - i)) {
                     System.out.print("*");
-                } else  {
+                } else {
                     System.out.print(" ");
                 }
             }
