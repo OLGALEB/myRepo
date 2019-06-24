@@ -55,36 +55,6 @@ public class Main {
 
 
 
-    /* Armor secondSuite = new Armor(
-                new Helmet("black", "OpenedHelmet", 3, 9, 20),
-                new Cuirass("red", 21, 29, 37),
-                new Boot("silver", 23, 31, 25),
-                new Boot("silver", 17, 33, 27),
-                new Sword("red", 19, 17, 17, 27),
-                new Shield("silver", 25, 23, 21)
-        );
-        System.out.println("secondSuite.getCost() = " + secondSuite.getCost());
-        System.out.println("secondSuite.getWeight() = " + secondSuite.getWeight());
-        List<Item> byCost = secondSuite.getByCost(17, 29);
-        for (Item item : byCost) {
-            System.out.println("item = " + item);
-        }
-
-        Armor thirdSuite = new Armor(
-                new Helmet("green", "ClosedHelmet", 7, 11, 15),
-                new Cuirass("silver", 17, 27, 37),
-                new Boot("red", 21, 33, 23),
-                new Boot("gold", 21, 33, 25),
-                new Sword("red", 17, 11, 17, 27),
-                new Shield("red", 25, 25, 21)
-        );
-        System.out.println("thirdSuite.getCost() = " + thirdSuite.getCost());
-        System.out.println("thirdSuite.getWeight() = " + thirdSuite.getWeight());
-
-        List<Item> sorted = thirdSuite.sorterByCost();
-        for (Item item : sorted) {
-            System.out.println("item = " + item);
-        }*/
 
 
 

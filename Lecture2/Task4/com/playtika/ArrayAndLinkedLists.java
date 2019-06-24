@@ -62,14 +62,12 @@ for (int i= 0; i < 1000000; i++) {
 
     }
 
-
         return endTime;
     }
 
 
     private static long deleteElement(List<Integer> integers, int a, long startTime, long endTime, Random newRandom) {
-        //for (int i= 0; i < 1000000; i++) {
-                //a = newRandom.nextInt(1000000);
+
             integers.remove(1000);
 
 

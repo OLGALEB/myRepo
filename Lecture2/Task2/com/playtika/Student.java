@@ -21,10 +21,7 @@ public class Student {
         this.surname = surname;
         this.age = age;
     }
-/*
-    public  Integer getKey() {
-        return key;
-    }*/
+
 
 
     public int getAge() {
@@ -33,10 +30,12 @@ public class Student {
     }
 
     public String getSurname() {
+
         return surname;
     }
 
     public int getId() {
+
         return id;
     }
 
