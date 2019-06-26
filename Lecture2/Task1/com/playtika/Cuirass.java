@@ -1,6 +1,6 @@
 package com.playtika;
 
-public class Cuirass extends Item {
+public class Cuirass extends ArmorItem {
 
     public final String color;
     public final int protectionLevel;

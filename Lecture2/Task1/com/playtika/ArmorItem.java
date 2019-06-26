@@ -1,18 +1,18 @@
 package com.playtika;
 
-public class Item {
+public class ArmorItem {
 
-    public final int cost;
+    public final double cost;
     public final int weight;
 
-    public Item(int cost, int weight) {
+    public ArmorItem(double cost, int weight) {
         this.cost = cost;
         this.weight = weight;
     }
 
     @Override
     public String toString() {
-        return "Item{" +
+        return "ArmorItem{" +
                 "cost=" + cost +
                 ", weight=" + weight +
                 '}';

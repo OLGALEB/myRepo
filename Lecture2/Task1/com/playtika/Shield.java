@@ -1,6 +1,6 @@
 package com.playtika;
 
-public class Shield extends Item {
+public class Shield extends ArmorItem {
 
     public final String color;
     public final int protectionLevel;

@@ -1,6 +1,6 @@
 package com.playtika;
 
-public class Boot extends Item {
+public class Boot extends ArmorItem {
 
     public  final String color;
     public  final int protectionLevel;

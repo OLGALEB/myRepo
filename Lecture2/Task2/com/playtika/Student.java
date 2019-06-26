@@ -1,13 +1,8 @@
 package com.playtika;
-import java.security.Key;
+
 import java.util.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map;
-import static java.lang.System.*;
+
+import static java.lang.System.out;
 
 public class Student {
     private int id;
@@ -21,8 +16,6 @@ public class Student {
         this.surname = surname;
         this.age = age;
     }
-
-
 
     public int getAge() {
 
@@ -41,7 +34,7 @@ public class Student {
 
     public static void main(String[] args) {
 
-        ArrayList<Student> studentList = new ArrayList<>();
+        List<Student> studentList = new ArrayList<>();
         Student firstStudent = new Student(1, "Vova", "Ivanov", 18);
         studentList.add(firstStudent);
         Student secondStudent = new Student(2, "Lesha", "Lebedev", 19);
@@ -68,34 +61,12 @@ public class Student {
         Collections.sort(studentList, new AgeComparator());
         out.println(studentList);
 
-        startsWith(studentList);
-        getAverage(studentList);
+        surnameStartsWithI(studentList);
+        getAverageAge(studentList);
+        HashMap<Integer, Student> integerStudentHashMap = convertToMap(studentList);
+        Map<Integer, Student> integerStudentMap = selectedByKey(integerStudentHashMap);
 
-
-
-        HashMap <Integer,Student>  studentsHM = new HashMap <Integer, Student>(); //convert list to map
-
-        for  (Student student1: studentList) {
-            studentsHM.put((student1.getId()), student1);
-        }
-
-        System.out.println("Student's HashMap is: " + studentsHM);
-
-
-        HashMap <Integer,Student> selectedByKey = new HashMap<>();
-        Iterator<Map.Entry<Integer, Student>> iterator = studentsHM.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry<Integer, Student> entry = iterator.next();
-            Integer key = entry.getKey();
-            if(key>5){
-                selectedByKey.put(entry.getKey(),entry.getValue());
-            }
-
-        }
-        System.out.println("Selected by Key HashMap: " + selectedByKey);
     }
-
-
 
     @Override
     public String toString() {
@@ -107,28 +78,56 @@ public class Student {
                 '}';
     }
 
+    public static HashMap<Integer, Student> convertToMap(List<Student> studentList) {
+        HashMap<Integer, Student> studentsHM = new HashMap<>(); //convert list to map
+
+        for (Student student1 : studentList) {
+            studentsHM.put((student1.getId()), student1);
+        }
+        System.out.println("Student's HashMap is: " + studentsHM);
+        return studentsHM;
+
+    }
+
+    private static Map<Integer, Student> selectedByKey(HashMap<Integer, Student> studentsHM) {
+        Map<Integer, Student> selectedByKeyMap = new HashMap<>();
+        Iterator<Map.Entry<Integer, Student>> iterator = studentsHM.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, Student> entry = iterator.next();
+            Integer key = entry.getKey();
+            if (key > 5) {
+                selectedByKeyMap.put(entry.getKey(), entry.getValue());
+            }
+
+        }
+        System.out.println("Selected by Key HashMap: " + selectedByKeyMap);
+        return selectedByKeyMap;
+    }
+
+
     public static class AgeComparator implements Comparator<Student> {
         @Override
         public int compare(Student st1, Student st2) {
+
             return st2.getAge() - st1.getAge();
         }
     }
 
-    public static ArrayList<Student> startsWith(ArrayList<Student> student) {
-        ArrayList<Student> resultSorted = new ArrayList<>();
+    public static ArrayList<Student> surnameStartsWithI(List<Student> student) {
+        ArrayList<Student> listSelectedBySurname = new ArrayList<>();
         for (Student sortedStudent : student) {
             if (sortedStudent.getSurname().startsWith("I")) {
-                resultSorted.add(sortedStudent);
+                listSelectedBySurname.add(sortedStudent);
             }
         }
         System.out.println("Selection by the first I - letter of the surname: ");
-        for (Student st1 : resultSorted) {
+        for (Student st1 : listSelectedBySurname) {
             System.out.println(st1.toString());
         }
-        return resultSorted;
+        return listSelectedBySurname;
     }
 
-    public static double getAverage(ArrayList<Student> student) {
+    public static double getAverageAge(List<Student> student) {
         int startedPoint = 0;
 
         for (Student elementForAverage : student) {

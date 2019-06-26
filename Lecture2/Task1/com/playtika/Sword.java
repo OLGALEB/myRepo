@@ -1,11 +1,10 @@
 package com.playtika;
 
-public class Sword extends Item {
+public class Sword extends ArmorItem {
 
     public final String color;
     public final int damageCaused;
     public final int sharpness;
-
 
     public Sword(String color, int damageCaused, int sharpness, int cost, int weight) {
         super(cost, weight);
