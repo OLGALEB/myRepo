@@ -7,32 +7,32 @@ import java.util.List;
 
 public class Armor {
 
-    public final List<ArmorItem> totalArmorItems = new ArrayList<>();
+    public final List<ArmorItem> armorItemsCollection = new ArrayList<>();
 
     public Armor(List<ArmorItem> armorItems){
 
-        this.totalArmorItems.addAll(armorItems);
+        this.armorItemsCollection.addAll(armorItems);
     }
 
-    public int getWeight() {
+    int getWeight() {
         int armorWeight = 0;
-        for (ArmorItem armorItem : totalArmorItems) {
-            armorWeight = armorWeight + armorItem.weight;
+        for (ArmorItem armorItem : armorItemsCollection) {
+            armorWeight = armorWeight + armorItem.getWeight();
         }
         return armorWeight;
     }
-    public double getCost() {
+    double getCost() {
         double armorCost = 0;
-        for (ArmorItem armorItem : totalArmorItems) {
-            armorCost = armorCost + armorItem.cost;
+        for (ArmorItem armorItem : armorItemsCollection) {
+            armorCost = armorCost + armorItem.getCost();
         }
         return armorCost;
     }
 
-    public List<ArmorItem> getByWeight(int minWeight, int maxWeight){
+    private List<ArmorItem> getByWeight(int minWeight, int maxWeight){
         List<ArmorItem> resultWeight = new ArrayList<>();
-        for (ArmorItem armorArmorItem : totalArmorItems) {
-            if ( armorArmorItem.weight >= minWeight && armorArmorItem.weight <= maxWeight) {
+        for (ArmorItem armorArmorItem : armorItemsCollection) {
+            if ( armorArmorItem.getWeight() >= minWeight && armorArmorItem.getWeight() <= maxWeight) {
                 resultWeight.add(armorArmorItem);
             }
         }
@@ -41,8 +41,8 @@ public class Armor {
 
     public List<ArmorItem> getByCost(int minCost, int maxCost){
         List<ArmorItem> resultCost = new ArrayList<>();
-        for (ArmorItem armorArmorItem : totalArmorItems) {
-            if ( armorArmorItem.cost >= minCost && armorArmorItem.cost <= maxCost) {
+        for (ArmorItem armorArmorItem : armorItemsCollection) {
+            if ( armorArmorItem.getCost() >= minCost && armorArmorItem.getCost() <= maxCost) {
                 resultCost.add(armorArmorItem);
             }
         }
@@ -51,12 +51,12 @@ public class Armor {
 
     public List<ArmorItem> sortedByCost(){
         List<ArmorItem> sortedValue = new ArrayList<>();
-        sortedValue.addAll(totalArmorItems);
+        sortedValue.addAll(armorItemsCollection);
         Collections.sort(sortedValue, new Comparator<ArmorItem>() {
             @Override
             public int compare(ArmorItem i1, ArmorItem i2) {
-                if (i1.cost < i2.cost) return -1;
-                else if (i1.cost == i2.cost) return 0;
+                if (i1.getCost() < i2.getCost()) return -1;
+                else if (i1.getCost() == i2.getCost()) return 0;
                 else return 1;
             }
 
@@ -67,7 +67,7 @@ public class Armor {
     @Override
     public String toString() {
         return "Armor{" +
-                "totalArmorItems=" + totalArmorItems +
+                "armorItemsCollection=" + armorItemsCollection +
                 '}';
     }
 }

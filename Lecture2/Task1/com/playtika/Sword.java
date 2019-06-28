@@ -19,8 +19,8 @@ public class Sword extends ArmorItem {
                 "color='" + color + '\'' +
                 ", damageCaused=" + damageCaused +
                 ", sharpness=" + sharpness +
-                ", cost=" + cost +
-                ", weight=" + weight +
+                ", cost=" + getCost() +
+                ", weight=" + getWeight() +
                 '}';
     }
 }

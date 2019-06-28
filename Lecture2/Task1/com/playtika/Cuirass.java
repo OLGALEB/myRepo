@@ -16,8 +16,8 @@ public class Cuirass extends ArmorItem {
         return "Cuirass{" +
                 "color='" + color + '\'' +
                 ", protectionLevel=" + protectionLevel +
-                ", cost=" + cost +
-                ", weight=" + weight +
+                ", cost=" + getCost() +
+                ", weight=" + getWeight() +
                 '}';
     }
 }

@@ -17,8 +17,8 @@ public class Boot extends ArmorItem {
         return "Boot{" +
                 "color='" + color + '\'' +
                 ", protectionLevel=" + protectionLevel +
-                ", cost=" + cost +
-                ", weight=" + weight +
+                ", cost=" + getCost() +
+                ", weight=" + getWeight() +
                 '}';
     }
 }

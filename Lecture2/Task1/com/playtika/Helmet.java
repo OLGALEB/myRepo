@@ -20,8 +20,8 @@ public class Helmet extends ArmorItem {
                 "color='" + color + '\'' +
                 ", protectionLevel=" + protectionLevel +
                 ", helmType='" + helmType + '\'' +
-                ", cost=" + cost +
-                ", weight=" + weight +
+                ", cost=" + getCost() +
+                ", weight=" + getWeight() +
                 '}';
     }
 }

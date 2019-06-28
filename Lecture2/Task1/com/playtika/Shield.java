@@ -16,8 +16,8 @@ public class Shield extends ArmorItem {
         return "Shield{" +
                 "color='" + color + '\'' +
                 ", protectionLevel=" + protectionLevel +
-                ", cost=" + cost +
-                ", weight=" + weight +
+                ", cost=" + getCost() +
+                ", weight=" + getWeight() +
                 '}';
     }
 }
