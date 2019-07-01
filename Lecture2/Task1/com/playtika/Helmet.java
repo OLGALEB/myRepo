@@ -2,9 +2,9 @@ package com.playtika;
 
 public class Helmet extends ArmorItem {
 
-    public final String color;
-    public final int protectionLevel;
-    public final HelmType helmType;
+    private final String color;
+    private final int protectionLevel;
+    private final HelmType helmType;
 
 
     public Helmet(String color, HelmType helmType, int protectionLevel, int cost, int weight) {

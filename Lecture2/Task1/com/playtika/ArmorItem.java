@@ -5,6 +5,11 @@ public class ArmorItem {
     private final double cost;
     private final int weight;
 
+    ArmorItem(double cost, int weight) {
+        this.cost = cost;
+        this.weight = weight;
+    }
+
     public double getCost() {
         return cost;
     }
@@ -13,10 +18,6 @@ public class ArmorItem {
         return weight;
     }
 
-    ArmorItem(double cost, int weight) {
-        this.cost = cost;
-        this.weight = weight;
-    }
 
     @Override
     public String toString() {

@@ -6,57 +6,57 @@ import java.util.List;
 import java.util.Random;
 
 public class ArrayAndLinkedLists {
+    static final Random RANDOM = new Random();
+
     public static void main(String[] args) {
-        int a = 0;
-        final Random newRandom = new Random(); // Create Random generator
+
 
         List<Integer> createdArrayList = new ArrayList<>();
         List<Integer> createdLinkedList = new LinkedList<>();
 
-        long x = addRandomtoCreatedArrayListMeasure(newRandom, createdArrayList);
-        System.out.println("Time delta for created ArrayList: " + x);
+        long deltaForArrayListCreate = addRandomtoCreatedArrayListMeasure(createdArrayList);
+        System.out.println("Time delta for created ArrayList: " + deltaForArrayListCreate);
 
-        long y = addRandomCreatedLinkedListMeasure(newRandom, createdLinkedList);
-        System.out.println("Time delta for created LinkedList: " + y);
+        long deltaForLinkedListCreate = addRandomCreatedLinkedListMeasure(createdLinkedList);
+        System.out.println("Time delta for created LinkedList: " + deltaForLinkedListCreate);
 
-        long w = measureForDeletedElementForArrayList(createdArrayList);
-        System.out.println("Time delta for created ArrayList: " + w);
+        long deltaForDeleteItemsArrayList = measureForDeletedElementForArrayList(createdArrayList);
+        System.out.println("Time delta for created ArrayList: " + deltaForDeleteItemsArrayList);
 
-        long z = measureForDeletedElementInLinkedList(createdLinkedList);
-        System.out.println("Time delta for delete 1000 elements from LinkedList:" + z);
-
-
-        long c = measureForFoundedValuesInArrayList(createdArrayList);
-        System.out.println("Time delta for count 1000 elements from ArrayList: " + c);
+        long deltaForDeleteitemsLinkedList = measureForDeletedElementInLinkedList(createdLinkedList);
+        System.out.println("Time delta for delete 1000 elements from LinkedList:" + deltaForDeleteitemsLinkedList);
 
 
-        long r = measureForFoundedValuesInLinkedList(createdLinkedList);
-        System.out.println("Time delta for count 1000 elements from LinkedList: " + r);
+        long deltaForFoundedItemsArrayList = measureForFoundedValuesInArrayList(createdArrayList);
+        System.out.println("Time delta for count 1000 elements from ArrayList: " + deltaForFoundedItemsArrayList);
+
+
+        long deltaForFoundedElementsLinkedList = measureForFoundedValuesInLinkedList(createdLinkedList);
+        System.out.println("Time delta for count 1000 elements from LinkedList: " + deltaForFoundedElementsLinkedList);
     }
 
-
-    private static void addRandomToCreatedList(List<Integer> integers, Random newRandom) { // newRandom used in this method
+    private static void addRandomToCreatedList(List<Integer> integers) {
         for (int i = 0; i < 100000; i++) {
-            int a = newRandom.nextInt(1000);
+            int a = RANDOM.nextInt(1000);
             integers.add(a);
         }
 
     }
 
-    private static long addRandomtoCreatedArrayListMeasure(Random newRandom, List<Integer> createdArrayList) {
-        long startTime1 = System.nanoTime();
-        addRandomToCreatedList(createdArrayList, newRandom);
-        long endTime1 = System.nanoTime();
-        return (endTime1 - startTime1);
+    private static long addRandomtoCreatedArrayListMeasure(List<Integer> createdArrayList) {
+        long startTime = System.nanoTime();
+        addRandomToCreatedList(createdArrayList);
+        long endTime = System.nanoTime();
+        return (endTime - startTime);
     }
 
 
-    private static long addRandomCreatedLinkedListMeasure(Random newRandom, List<Integer> createdLinkedList) {
+    private static long addRandomCreatedLinkedListMeasure(List<Integer> createdLinkedList) {
 
-        long startTime2 = System.nanoTime();
-        addRandomToCreatedList(createdLinkedList, newRandom);
-        long endTime2 = System.nanoTime();
-        return (endTime2 - startTime2);
+        long startTime = System.nanoTime();
+        addRandomToCreatedList(createdLinkedList);
+        long endTime = System.nanoTime();
+        return (endTime - startTime);
     }
 
 
@@ -71,17 +71,17 @@ public class ArrayAndLinkedLists {
     }
 
     private static long measureForDeletedElementInLinkedList(List<Integer> createdLinkedList) {
-        long startTime4 = System.nanoTime();
+        long startTime = System.nanoTime();
         deleteElementsFormSelectedList(createdLinkedList);
-        long endTime4 = System.nanoTime();
-        return (endTime4 - startTime4);
+        long endTime = System.nanoTime();
+        return (endTime - startTime);
     }
 
     private static long measureForDeletedElementForArrayList(List<Integer> createdArrayList) {
-        long startTime3 = System.nanoTime();
+        long startTime = System.nanoTime();
         deleteElementsFormSelectedList(createdArrayList);
-        long endTime3 = System.nanoTime();
-        return (endTime3 - startTime3);
+        long endTime = System.nanoTime();
+        return (endTime - startTime);
 
     }
 
@@ -95,36 +95,16 @@ public class ArrayAndLinkedLists {
     }
 
     private static long measureForFoundedValuesInArrayList(List<Integer> createdArrayList) {
-        long startTime5 = System.nanoTime();
+        long startTime = System.nanoTime();
         foundByElement(createdArrayList);
-        long endTime5 = System.nanoTime();
-        return (endTime5 - startTime5);
+        long endTime = System.nanoTime();
+        return (endTime - startTime);
     }
 
     private static long measureForFoundedValuesInLinkedList(List<Integer> createdLinkedList) {
-        long startTime6 = System.nanoTime();
+        long startTime = System.nanoTime();
         foundByElement(createdLinkedList);
-        long endTime6 = System.nanoTime();
-        return (endTime6 - startTime6);
+        long endTime = System.nanoTime();
+        return (endTime - startTime);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

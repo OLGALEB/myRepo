@@ -2,9 +2,8 @@ package com.playtika;
 
 public class Boot extends ArmorItem {
 
-    public  final String color;
-    public  final int protectionLevel;
-
+    private final String color;
+    private final int protectionLevel;
 
     public Boot(String color, int protectionLevel, int cost, int weight) {
         super(cost, weight);

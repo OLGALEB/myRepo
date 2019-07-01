@@ -5,18 +5,22 @@ import java.util.Map;
 
 public class ProgramPerformance {
     public static void main(String[] args) {
-        NewStudents studentsList = new NewStudents();
-        studentsList.sortByAge ();
+        List<NewStudent> studentsList = NewStudent.listDeclaration();
+        System.out.println("Students List: " + studentsList);
 
-        List<NewStudent> x = studentsList.surnameStartWithI();
-        NewStudent.userOutPut("Surname starts with I",x);
+        List<NewStudent> sortedByAgeList = NewStudent.sortByAge(studentsList);
+        System.out.println("Sorted by age List: " + sortedByAgeList);
 
-        double a = studentsList.getAverageAge();
-        Student.printAverageAge("Average age: " + Double.toString(a));
+        List<NewStudent> selectedBySurnameList = NewStudent.surnameStartWithI(studentsList);
+        System.out.println("Students starts with I: " + selectedBySurnameList);
 
-        Map<Integer, NewStudent> w = studentsList.convertToMap();
-        Student.getHashMap("Student's HashMap:" + w);
+        double averageAge = NewStudent.getAverageAge(studentsList);
+        System.out.println("Average age: " + averageAge);
 
-        Map<Integer, NewStudent> selectedByKeyStudents = studentsList.selectedByKey(w);
+        Map<Integer, NewStudent> studentsListHash = NewStudent.convertToMap(studentsList);
+        System.out.println("Hash Map: " + studentsListHash);
+
+        Map<Integer, NewStudent> selectedByKeyStudents = NewStudent.selectedByKey(studentsListHash);
+        System.out.println("Selected by Key Map : " + selectedByKeyStudents);
     }
 }

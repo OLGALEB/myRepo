@@ -1,4 +1,5 @@
 package com.playtika;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -10,8 +11,8 @@ public class Main {
 
         Knight firstKnight = new Knight(4, "Arthur", knightSuite, "soldier");
 
-        UserInput userInput = collectUserInpt();
-        printResult(userInput, knightSuite, firstKnight);
+        CostRange costRange = collectUserInput();
+        printResult(costRange, knightSuite, firstKnight);
     }
 
 
@@ -27,26 +28,27 @@ public class Main {
         return new Armor(armorList);
     }
 
-    private static UserInput collectUserInpt() {
-        UserInput userInput = new UserInput();
+    private static CostRange collectUserInput() {
+
         Scanner in = new Scanner(System.in);
         System.out.println("Here is a created knight!Fill in  Maximum and Minimum cost's value to find the corresponding ammunition! ");
-        int minCost = in.nextInt();//reads entered Int
+        int minCost = in.nextInt();
         int maxCost = in.nextInt();
+        CostRange costRange = new CostRange(minCost, maxCost);
         System.out.println();
-        userInput.maxCost = maxCost;
-        userInput.minCost = minCost;
+        //costRange.maxCost = maxCost;
+        //costRange.minCost = minCost;
         in.close();
-        return userInput;
+        return costRange;
     }
 
-    private static void printResult(UserInput userInput, Armor firstSuite, Knight firstKnight) {
+    private static void printResult(CostRange costRange, Armor firstSuite, Knight firstKnight) {
         int minIndex = 10;
-        if (userInput.minCost < minIndex) {
+        if (costRange.getMaxCost() < minIndex) {
 
             System.out.println("Can not to perform the action - the entered sum does not correspond the condition!Min value should be more or equal to 10!");
         } else {
-            List<ArmorItem> byCost = firstSuite.getByCost(userInput.minCost, userInput.maxCost);
+            List<ArmorItem> byCost = firstSuite.getByCost(costRange.getMinCost(), costRange.getMaxCost());
             System.out.println("Ammunition which falling in the sample:");
             for (ArmorItem armorItem : byCost) {
                 System.out.println(armorItem);
@@ -61,15 +63,5 @@ public class Main {
                 System.out.println(armorItem);
             }
         }
-
     }
- }
-
-
-
-
-
-
-
-
-
+}

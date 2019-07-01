@@ -6,23 +6,19 @@ import java.util.Map;
 
 public class Program {
 
-
     public static void main(String[] args) {
-        Students studentList = new Students();
-        studentList.printStudent();
+        List<Student> studentList = Student.listDeclaration();
 
-        List<Student> x = studentList.surnameStartsWithI();
-        Student.userOutPut("Students starts with I: ", x);
+        List<Student> selectedBySurnameList = Student.surnameStartsWithI(studentList);
+        System.out.println("Students starts with I: " + selectedBySurnameList);
 
-        double a = studentList.getAverageAge();
-        Student.printAverageAge("Average age: " + Double.toString(a));
+        double averageAge = Student.getAverageAge(studentList);
+        System.out.println("Average age: " + Double.toString(averageAge));
 
-        Map<Integer, Student> w = studentList.convertToMap();
-        Student.getHashMap("Student's HashMap:" + w);
+        Map<Integer, Student> hashMapWithStudents = Student.convertToMap(studentList);
+        System.out.println("Student's HashMap:" + hashMapWithStudents);
 
-        Map<Integer, Student> t = studentList.selectedByKey(w);
-        Student.getHashMap("Selected by Key:" + t);
-
+        Map<Integer, Student> selectedByKeyHashMap = Student.selectedByKey((HashMap<Integer, Student>) hashMapWithStudents);
+        System.out.println("Selected by Key6:" + selectedByKeyHashMap);
     }
-
 }
