@@ -3,6 +3,7 @@ package com.playtika;
 import java.util.*;
 
 public class Runner {
+    static final int KEY_VALUE = 5;
 
     public static void main(String[] args) {
         List<Student> studentList = prepareList();
@@ -19,7 +20,7 @@ public class Runner {
         Map<Integer, Student> hashMapWithStudents = convertToMap(studentList);
         System.out.println("Student's HashMap:" + hashMapWithStudents);
 
-        Map<Integer, Student> selectedByKeyHashMap = selectedByKey((HashMap<Integer, Student>) hashMapWithStudents);
+        Map<Integer, Student> selectedByKeyHashMap = selectedByKey((HashMap<Integer, Student>) hashMapWithStudents, KEY_VALUE);
         System.out.println("Selected by Key:" + selectedByKeyHashMap);
     }
 
@@ -36,7 +37,7 @@ public class Runner {
         studentList.add(new Student(9, "Artem", "Petrov", 24));
         studentList.add(new Student(10, "Pavel", "Nazarov", 21));
         for (Student st : studentList) {
-            System.out.println(st.toString());
+            System.out.println(st);
         }
 
         return studentList;
@@ -51,8 +52,7 @@ public class Runner {
         return studentsHM;
     }
 
-    public static Map<Integer, Student> selectedByKey(HashMap<Integer, Student> studentsHM) {
-        int keyValue = 5;
+    public static Map<Integer, Student> selectedByKey(HashMap<Integer, Student> studentsHM, int keyValue) {
         Map<Integer, Student> selectedByKeyMap = new HashMap<>();
         Iterator<Map.Entry<Integer, Student>> iterator = studentsHM.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -61,7 +61,6 @@ public class Runner {
             if (key > keyValue) {
                 selectedByKeyMap.put(entry.getKey(), entry.getValue());
             }
-
         }
         return selectedByKeyMap;
     }
@@ -82,8 +81,7 @@ public class Runner {
         for (Student elementForAverage : studentList) {
             totalAge += elementForAverage.getAge();
         }
-        double averageAgeResult = totalAge / studentList.size();
-        return averageAgeResult;
+        return (double) (totalAge / studentList.size());
     }
 
     public static List<Student> sortedByAge(List<Student> studentList) {

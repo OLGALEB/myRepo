@@ -7,12 +7,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Armor knightSuite = buildArmor();
         Armor firstSuite = buildArmor();
-        Knight firstKnight = new Knight(4, "Arthur", knightSuite, "soldier");
+        Knight firstKnight = new Knight(4, "Arthur", firstSuite, "soldier");
 
         CostRange costRange = collectUserInput();
-        printSortedByUserInputResult(costRange, knightSuite);
+        printSortedByUserInputResult(costRange, firstSuite);
         printKnightInfo(firstKnight, firstSuite);
         printSortedByCostArmor(firstSuite);
     }
