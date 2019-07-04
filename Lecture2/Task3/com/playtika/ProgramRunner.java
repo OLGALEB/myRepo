@@ -8,83 +8,80 @@ import java.util.stream.Collectors;
 
 public class ProgramRunner {
     public static void main(String[] args) {
-        List<NewStudent> studentsList = listDeclaration();
-        System.out.println("Students List: " + studentsList);
+        List<Student> studentList = prepareList();
+        System.out.println("Students List: " + studentList);
 
-        List<NewStudent> sortedByAgeList = sortByAge(studentsList);
+        List<Student> sortedByAgeList = sortByAge(studentList);
         System.out.println("Sorted by age List: " + sortedByAgeList);
 
-        List<NewStudent> selectedBySurnameList = surnameStartWithI(studentsList);
+        List<Student> selectedBySurnameList = surnameStartWithI(studentList);
         System.out.println("Students starts with I: " + selectedBySurnameList);
 
-        double averageAge = getAverageAge(studentsList);
+        double averageAge = getAverageAge(studentList);
         System.out.println("Average age: " + averageAge);
 
-        Map<Integer, NewStudent> studentsListHash = convertToMap(studentsList);
+        Map<Integer, Student> studentsListHash = convertToMap(studentList);
         System.out.println("Hash Map: " + studentsListHash);
 
-        Map<Integer, NewStudent> selectedByKeyStudents = selectedByKey(studentsListHash);
+        Map<Integer, Student> selectedByKeyStudents = selectedByKey(studentsListHash);
         System.out.println("Selected by Key Map : " + selectedByKeyStudents);
     }
 
-    public static List<NewStudent> listDeclaration() {
-        List<NewStudent> studentsList = new ArrayList<>();
-        NewStudent firstStudent = new NewStudent(1, "Vova", "Ivanov", 18);
-        studentsList.add(firstStudent);
-        NewStudent secondStudent = new NewStudent(2, "Lesha", "Lebedev", 19);
-        studentsList.add(secondStudent);
-        NewStudent thirdStudent = new NewStudent(3, "Vanya", "Petrov", 21);
-        studentsList.add(thirdStudent);
-        NewStudent fifthStudent = new NewStudent(5, "Sergey", "Sidorov", 22);
-        studentsList.add(fifthStudent);
-        NewStudent sixthStudent = new NewStudent(6, "Andrey", "Ivanov", 20);
-        studentsList.add(sixthStudent);
-        NewStudent seventhStudent = new NewStudent(7, "Igor", "Makarevich", 18);
-        studentsList.add(seventhStudent);
-        NewStudent eighthStudent = new NewStudent(8, "Igor", "Nazarov", 19);
-        studentsList.add(eighthStudent);
-        NewStudent ninthStudent = new NewStudent(9, "Artem", "Petrov", 24);
-        studentsList.add(ninthStudent);
-        NewStudent tenthStudent = new NewStudent(10, "Pavel", "Nazarov", 21);
-        studentsList.add(tenthStudent);
-        return studentsList;
+
+    public static List<Student> prepareList() {
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(new Student(1, "Vova", "Ivanov", 18));
+        studentList.add(new Student(2, "Lesha", "Lebedeva", 18));
+        studentList.add(new Student(3, "Lesha", "Ivanov", 19));
+        studentList.add(new Student(4, "Sergey", "Petrov", 19));
+        studentList.add(new Student(5, "Sergey", "Sidorov", 22));
+        studentList.add(new Student(6, "Andrey", "Ivanov", 20));
+        studentList.add(new Student(7, "Igor", "Makarevich", 18));
+        studentList.add(new Student(8, "Igor", "Nazarov", 19));
+        studentList.add(new Student(9, "Artem", "Petrov", 24));
+        studentList.add(new Student(10, "Pavel", "Nazarov", 21));
+        for (Student st : studentList) {
+            System.out.println(st.toString());
+        }
+        return studentList;
     }
 
-    public static List<NewStudent> sortByAge(List<NewStudent> studentsList) {
-        Comparator<NewStudent> byStudentListAge = Comparator.comparingInt(NewStudent::getAge);
-        studentsList = studentsList.stream().sorted(byStudentListAge).collect(Collectors.toList());
+    public static List<Student> sortByAge(List<Student> studentList) {
+        Comparator<Student> byStudentListAge = Comparator.comparingInt(Student::getAge);
+        studentList = studentList.stream().sorted(byStudentListAge).collect(Collectors.toList());
 
-        for (int i = 0; i < studentsList.size(); i++) {
+        for (int i = 0; i < studentList.size(); i++) {
 
         }
-        return studentsList;
+        return studentList;
     }
 
-    public static List<NewStudent> surnameStartWithI(List<NewStudent> studentsList) {
-        List<NewStudent> filteredBySurname =
-                studentsList
+    public static List<Student> surnameStartWithI(List<Student> studentList) {
+        List<Student> filteredBySurname =
+                studentList
                         .stream()
-                        .filter(p -> p.surname.startsWith("I"))
+                        .filter(p -> p.getSurname().startsWith("I"))
                         .collect(Collectors.toList());
         return filteredBySurname;
     }
 
-    public static double getAverageAge(List<NewStudent> studentsList) {
-        double averageAge = studentsList
+
+    public static double getAverageAge(List<Student> studentList) {
+        double averageAge = studentList
                 .stream()
-                .collect(Collectors.averagingInt(p -> p.age));
+                .collect(Collectors.averagingInt(p -> p.getAge()));
 
         return averageAge;
     }
 
-    public static Map<Integer, NewStudent> convertToMap(List<NewStudent> studentsList) {
-        Map<Integer, NewStudent> studentsListHash =
-                studentsList.stream().collect(Collectors.toMap(NewStudent::getId, student -> student));
+    public static Map<Integer, Student> convertToMap(List<Student> studentList) {
+        Map<Integer, Student> studentsListHash =
+                studentList.stream().collect(Collectors.toMap(Student::getId, student -> student));
         return studentsListHash;
     }
 
-    public static Map<Integer, NewStudent> selectedByKey(Map<Integer, NewStudent> studentListHash) {
-        Map<Integer, NewStudent> selectedByKeyStudents = studentListHash.entrySet().stream().filter(entry -> entry.getKey() <= 5).collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
+    public static Map<Integer, Student> selectedByKey(Map<Integer, Student> studentsListHash) {
+        Map<Integer, Student> selectedByKeyStudents = studentsListHash.entrySet().stream().filter(entry -> entry.getKey() <= 5).collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
         return selectedByKeyStudents;
     }
 }

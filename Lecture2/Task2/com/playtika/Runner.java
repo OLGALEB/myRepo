@@ -5,7 +5,10 @@ import java.util.*;
 public class Runner {
 
     public static void main(String[] args) {
-        List<Student> studentList = listDeclaration();
+        List<Student> studentList = prepareList();
+
+        List<Student> listSortedByAge = sortedByAge(studentList);
+        System.out.println("Students sorted by age :" + listSortedByAge);
 
         List<Student> selectedBySurnameList = surnameStartsWithI(studentList);
         System.out.println("Students starts with I: " + selectedBySurnameList);
@@ -20,32 +23,22 @@ public class Runner {
         System.out.println("Selected by Key:" + selectedByKeyHashMap);
     }
 
-    public static List<Student> listDeclaration() {
+    public static List<Student> prepareList() {
         List<Student> studentList = new ArrayList<>();
-        Student firstStudent = new Student(1, "Vova", "Ivanov", 18);
-        studentList.add(firstStudent);
-        Student secondStudent = new Student(2, "Lesha", "Lebedev", 19);
-        studentList.add(secondStudent);
-        Student thirdStudent = new Student(3, "Vanya", "Petrov", 21);
-        studentList.add(thirdStudent);
-        Student fourthStudent = new Student(4, "Vanya", "Ivanov", 20);
-        studentList.add(fourthStudent);
-        Student fifthStudent = new Student(5, "Sergey", "Sidorov", 22);
-        studentList.add(fifthStudent);
-        Student sixthStudent = new Student(6, "Andrey", "Ivanov", 20);
-        studentList.add(sixthStudent);
-        Student seventhStudent = new Student(7, "Igor", "Makarevich", 18);
-        studentList.add(seventhStudent);
-        Student eighthStudent = new Student(8, "Igor", "Nazarov", 19);
-        studentList.add(eighthStudent);
-        Student ninthStudent = new Student(9, "Artem", "Petrov", 24);
-        studentList.add(ninthStudent);
-        Student tenthStudent = new Student(10, "Pavel", "Nazarov", 21);
-        studentList.add(tenthStudent);
+        studentList.add(new Student(1, "Vova", "Ivanov", 18));
+        studentList.add(new Student(2, "Lesha", "Lebedeva", 18));
+        studentList.add(new Student(3, "Lesha", "Ivanov", 19));
+        studentList.add(new Student(4, "Sergey", "Petrov", 19));
+        studentList.add(new Student(5, "Sergey", "Sidorov", 22));
+        studentList.add(new Student(6, "Andrey", "Ivanov", 20));
+        studentList.add(new Student(7, "Igor", "Makarevich", 18));
+        studentList.add(new Student(8, "Igor", "Nazarov", 19));
+        studentList.add(new Student(9, "Artem", "Petrov", 24));
+        studentList.add(new Student(10, "Pavel", "Nazarov", 21));
         for (Student st : studentList) {
             System.out.println(st.toString());
         }
-        Collections.sort(studentList, new Student.AgeComparator());
+
         return studentList;
     }
 
@@ -90,5 +83,10 @@ public class Runner {
         }
         double averageAgeResult = startedPoint / studentList.size();
         return averageAgeResult;
+    }
+
+    public static List<Student> sortedByAge(List<Student> studentList) {
+        Collections.sort(studentList, new Student.AgeComparator());
+        return studentList;
     }
 }
