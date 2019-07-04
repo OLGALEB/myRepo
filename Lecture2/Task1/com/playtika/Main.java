@@ -17,7 +17,6 @@ public class Main {
         printSortedByCostArmor(firstSuite);
     }
 
-
     private static Armor buildArmor() {
         List<ArmorItem> armorList = Arrays.asList(
                 new Helmet("black", HelmType.CLOSED, 5, 10, 15),
