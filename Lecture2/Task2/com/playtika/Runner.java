@@ -52,12 +52,13 @@ public class Runner {
     }
 
     public static Map<Integer, Student> selectedByKey(HashMap<Integer, Student> studentsHM) {
+        int keyValue = 5;
         Map<Integer, Student> selectedByKeyMap = new HashMap<>();
         Iterator<Map.Entry<Integer, Student>> iterator = studentsHM.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<Integer, Student> entry = iterator.next();
             Integer key = entry.getKey();
-            if (key > 5) {
+            if (key > keyValue) {
                 selectedByKeyMap.put(entry.getKey(), entry.getValue());
             }
 
@@ -76,12 +77,12 @@ public class Runner {
     }
 
     public static double getAverageAge(List<Student> studentList) {
-        int startedPoint = 0;
+        int totalAge = 0;
 
         for (Student elementForAverage : studentList) {
-            startedPoint += elementForAverage.getAge();
+            totalAge += elementForAverage.getAge();
         }
-        double averageAgeResult = startedPoint / studentList.size();
+        double averageAgeResult = totalAge / studentList.size();
         return averageAgeResult;
     }
 

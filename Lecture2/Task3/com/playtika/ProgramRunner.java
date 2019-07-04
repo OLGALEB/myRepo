@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ProgramRunner {
@@ -47,13 +48,8 @@ public class ProgramRunner {
     }
 
     public static List<Student> sortByAge(List<Student> studentList) {
-        Comparator<Student> byStudentListAge = Comparator.comparingInt(Student::getAge);
-        studentList = studentList.stream().sorted(byStudentListAge).collect(Collectors.toList());
-
-        for (int i = 0; i < studentList.size(); i++) {
-
-        }
-        return studentList;
+        Comparator<Student> comparator = new Student.AgeComparator();
+        return studentList.stream().sorted(comparator).collect(Collectors.toList());
     }
 
     public static List<Student> surnameStartWithI(List<Student> studentList) {
@@ -76,7 +72,7 @@ public class ProgramRunner {
 
     public static Map<Integer, Student> convertToMap(List<Student> studentList) {
         Map<Integer, Student> studentsListHash =
-                studentList.stream().collect(Collectors.toMap(Student::getId, student -> student));
+                studentList.stream().collect(Collectors.toMap(Student::getId,Function.identity()));
         return studentsListHash;
     }
 
