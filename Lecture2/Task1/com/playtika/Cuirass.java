@@ -21,7 +21,3 @@ public class Cuirass extends ArmorItem {
                 '}';
     }
 }
-
-
-
-

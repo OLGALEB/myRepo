@@ -36,7 +36,7 @@ public class ArrayAndLinkedLists {
     }
 
     private static void addRandomToCreatedList(List<Integer> integers) {
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             int a = RANDOM.nextInt(1000);
             integers.add(a);
         }
@@ -63,7 +63,7 @@ public class ArrayAndLinkedLists {
     private static void deleteElementsFormSelectedList(List<Integer> integers) {
 
         int i = 0;
-        while (i < 100) {
+        while (i < 1000) {
             integers.remove(i);
             i++;
         }
@@ -88,7 +88,7 @@ public class ArrayAndLinkedLists {
     private static void foundByElement(List<Integer> integers) {
 
         int i = 0;
-        while (i < 100) {
+        while (i < 1000) {
             integers.contains(i);
             i++;
         }

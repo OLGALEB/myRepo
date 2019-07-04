@@ -25,4 +25,3 @@ public class Helmet extends ArmorItem {
                 '}';
     }
 }
-

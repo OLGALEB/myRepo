@@ -8,16 +8,18 @@ public class Main {
     public static void main(String[] args) {
 
         Armor knightSuite = buildArmor();
-
+        Armor firstSuite = buildArmor();
         Knight firstKnight = new Knight(4, "Arthur", knightSuite, "soldier");
 
         CostRange costRange = collectUserInput();
-        printResult(costRange, knightSuite, firstKnight);
+        printSortedByUserInputResult(costRange, knightSuite);
+        printKnightInfo(firstKnight, firstSuite);
+        printSortedByCostArmor(firstSuite);
     }
 
 
     private static Armor buildArmor() {
-        List<ArmorItem> armorList = Arrays.asList( //enter args > ArrayList
+        List<ArmorItem> armorList = Arrays.asList(
                 new Helmet("black", HelmType.CLOSED, 5, 10, 15),
                 new Cuirass("gold", 15, 25, 35),
                 new Boot("black", 20, 30, 21),
@@ -36,32 +38,32 @@ public class Main {
         int maxCost = in.nextInt();
         CostRange costRange = new CostRange(minCost, maxCost);
         System.out.println();
-        //costRange.maxCost = maxCost;
-        //costRange.minCost = minCost;
         in.close();
         return costRange;
     }
 
-    private static void printResult(CostRange costRange, Armor firstSuite, Knight firstKnight) {
-        int minIndex = 10;
-        if (costRange.getMaxCost() < minIndex) {
+    private static void printSortedByUserInputResult(CostRange costRange, Armor firstSuite) {
 
-            System.out.println("Can not to perform the action - the entered sum does not correspond the condition!Min value should be more or equal to 10!");
-        } else {
-            List<ArmorItem> byCost = firstSuite.getByCost(costRange.getMinCost(), costRange.getMaxCost());
-            System.out.println("Ammunition which falling in the sample:");
-            for (ArmorItem armorItem : byCost) {
-                System.out.println(armorItem);
-            }
-
-            System.out.println("There is our knight:" + firstKnight);
-            System.out.println("All his ammunition costs:" + firstSuite.getCost());
-            System.out.println("All his ammunition weight:" + firstSuite.getWeight());
-            List<ArmorItem> sorted = firstSuite.sortedByCost();
-            System.out.println("His ammunition sorted by cost in incremental order: ");
-            for (ArmorItem armorItem : sorted) {
-                System.out.println(armorItem);
-            }
+        List<ArmorItem> listSelectedByCost = firstSuite.getByCost(costRange.getMinCost(), costRange.getMaxCost());
+        System.out.println("Ammunition which falling in the sample:");
+        for (ArmorItem armorItem : listSelectedByCost) {
+            System.out.println(armorItem);
         }
     }
+
+    private static void printKnightInfo(Knight firstKnight, Armor firstSuite) {
+        System.out.println("There is our knight:" + firstKnight);
+        System.out.println("All his ammunition costs:" + firstSuite.getCost());
+        System.out.println("All his ammunition weight:" + firstSuite.getWeight());
+    }
+
+    private static void printSortedByCostArmor(Armor firstSuite) {
+
+        List<ArmorItem> sorted = firstSuite.sortedByCost();
+        System.out.println("His ammunition sorted by cost in incremental order: ");
+        for (ArmorItem armorItem : sorted) {
+            System.out.println(armorItem);
+        }
+    }
+
 }

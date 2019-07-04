@@ -1,8 +1,8 @@
 package com.playtika;
 
 public class CostRange {
-    private int minCost;
-    private int maxCost;
+    private final int minCost;
+    private final int maxCost;
 
     public CostRange(int minCost, int maxCost) {
         this.minCost = minCost;
