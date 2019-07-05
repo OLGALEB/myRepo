@@ -3,7 +3,6 @@ package com.playtika;
 
 import java.util.Comparator;
 
-
 public class Student {
     private int id;
     private String name;

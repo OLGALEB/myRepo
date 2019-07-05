@@ -8,6 +8,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ProgramRunner {
+    static final int KEY_VALUE = 5;
+
     public static void main(String[] args) {
         List<Student> studentList = prepareList();
         System.out.println("Students List: " + studentList);
@@ -24,7 +26,7 @@ public class ProgramRunner {
         Map<Integer, Student> studentsListHash = convertToMap(studentList);
         System.out.println("Hash Map: " + studentsListHash);
 
-        Map<Integer, Student> selectedByKeyStudents = selectedByKey(studentsListHash);
+        Map<Integer, Student> selectedByKeyStudents = selectedByKey(studentsListHash, KEY_VALUE);
         System.out.println("Selected by Key Map : " + selectedByKeyStudents);
     }
 
@@ -53,31 +55,26 @@ public class ProgramRunner {
     }
 
     public static List<Student> surnameStartWithI(List<Student> studentList) {
-        List<Student> filteredBySurname =
-                studentList
-                        .stream()
-                        .filter(p -> p.getSurname().startsWith("I"))
-                        .collect(Collectors.toList());
-        return filteredBySurname;
+        return studentList
+                .stream()
+                .filter(p -> p.getSurname().startsWith("I"))
+                .collect(Collectors.toList());
     }
 
 
     public static double getAverageAge(List<Student> studentList) {
-        double averageAge = studentList
+        return studentList
                 .stream()
                 .collect(Collectors.averagingInt(p -> p.getAge()));
-
-        return averageAge;
     }
 
     public static Map<Integer, Student> convertToMap(List<Student> studentList) {
         Map<Integer, Student> studentsListHash =
-                studentList.stream().collect(Collectors.toMap(Student::getId,Function.identity()));
+                studentList.stream().collect(Collectors.toMap(Student::getId, Function.identity()));
         return studentsListHash;
     }
 
-    public static Map<Integer, Student> selectedByKey(Map<Integer, Student> studentsListHash) {
-        Map<Integer, Student> selectedByKeyStudents = studentsListHash.entrySet().stream().filter(entry -> entry.getKey() <= 5).collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
-        return selectedByKeyStudents;
+    public static Map<Integer, Student> selectedByKey(Map<Integer, Student> studentsListHash, int keyValue) {
+        return studentsListHash.entrySet().stream().filter(entry -> entry.getKey() <= keyValue).collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
     }
 }
