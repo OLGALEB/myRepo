@@ -1,4 +1,4 @@
-package Task1.com.playtika;
+package com.playtika;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ public class ArmorItem implements Serializable {
     private final int weight;
     private final String color;
 
-    public ArmorItem(double cost, int weight, String color) {
+    ArmorItem(double cost, int weight, String color) {
         this.cost = cost;
         this.weight = weight;
         this.color = color;

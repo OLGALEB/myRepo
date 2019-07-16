@@ -1,15 +1,15 @@
 package com.playtika;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Armor {
+public class Armor implements Serializable {
 
     public final List<ArmorItem> armorItems = new ArrayList<>();
 
     public Armor(List<ArmorItem> armorItems) {
-
         this.armorItems.addAll(armorItems);
     }
 
@@ -50,6 +50,26 @@ public class Armor {
         List<ArmorItem> resultCost = new ArrayList<>();
         for (ArmorItem armorArmorItem : armorItems) {
             if (armorArmorItem.getCost() >= minCost && armorArmorItem.getCost() <= maxCost) {
+                resultCost.add(armorArmorItem);
+            }
+        }
+        return resultCost;
+    }
+
+    public List<ArmorItem> getByMinCost(int minCost) {
+        List<ArmorItem> resultCost = new ArrayList<>();
+        for (ArmorItem armorArmorItem : armorItems) {
+            if (armorArmorItem.getCost() >= minCost) {
+                resultCost.add(armorArmorItem);
+            }
+        }
+        return resultCost;
+    }
+
+    public List<ArmorItem> getByMaxCost(int maxCost) {
+        List<ArmorItem> resultCost = new ArrayList<>();
+        for (ArmorItem armorArmorItem : armorItems) {
+            if (armorArmorItem.getCost() <= maxCost) {
                 resultCost.add(armorArmorItem);
             }
         }

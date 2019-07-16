@@ -1,7 +1,8 @@
 package com.playtika;
 
+import java.io.Serializable;
 
-public class Knight {
+public class Knight implements Serializable {
     private final int heathIndex;
     private final String name;
     private final Armor armor;
