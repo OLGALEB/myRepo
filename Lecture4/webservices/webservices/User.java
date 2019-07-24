@@ -3,11 +3,15 @@ package webservices;
 public class User {
     private String email;
     private String password;
-    private String token;
+    private int id;
+    private String registeredAt;
 
-    public User(String email,String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public User() {
     }
 
     public String getEmail() {
@@ -18,12 +22,20 @@ public class User {
         return password;
     }
 
-
-    public String getToken() {
-        return token;
+    public int getId() {
+        return id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public String getRegisteredAt() {
+        return registeredAt;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", id=" + id +
+                ", registeredAt='" + registeredAt + '\'' +
+                '}';
     }
 }

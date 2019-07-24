@@ -10,66 +10,65 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NotesService {
+    private static String urlBeginning = "https://taschool-notes-service.herokuapp.com";
+    HttpMethods httpMethod = new HttpMethods();
+    ObjectMapper objectMapper = new ObjectMapper();
 
-    public Notes createNote(User user) throws IOException {
+    public Note createNote(AccessToken token, Note note) throws IOException {
 
-        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint();
-        String json = "{\"content\":\"test\"}";
+        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint();
+        String json = objectMapper.writeValueAsString(note);
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-type", "application/json");
-        headers.put("Authorization", "Bearer" + user.getToken());
-        CloseableHttpResponse response = HttpMethods.post(json, uri, headers);
+        headers.put("Authorization", "Bearer" + token.getAccess_token());
+        CloseableHttpResponse response = httpMethod.post(json, uri, headers);
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
-        ObjectMapper objectMapper = new ObjectMapper();
-        Notes note = objectMapper.readValue(content, Notes.class);
-        return note;
+        return objectMapper.readValue(content, Note.class);
     }
 
+    public String getAllCreatedNotes(AccessToken token) throws IOException {
 
-    public String getAllCreatedNotes(User user) throws IOException {
-
-        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint();
+        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint();
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-type", "application/json");
-        headers.put("Authorization", "Bearer" + user.getToken());
-        CloseableHttpResponse response = HttpMethods.get(uri, headers);
-        HttpEntity entity = response.getEntity();
-        String content = EntityUtils.toString(entity);
-        return content;
-    }
-
-
-    public String getNoteById(int id, User user) throws IOException {
-        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-type", "application/json");
-        headers.put("Authorization", "Bearer" + user.getToken());
-        CloseableHttpResponse response = HttpMethods.get(uri, headers);
+        headers.put("Authorization", "Bearer" + token.getAccess_token());
+        CloseableHttpResponse response = httpMethod.get(uri, headers);
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
         return content;
     }
 
-    public String updateNoteById(int id, User user) throws IOException {
-        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
+
+    public String getNoteById(int id, AccessToken token) throws IOException {
+        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-type", "application/json");
+        headers.put("Authorization", "Bearer" + token.getAccess_token());
+        CloseableHttpResponse response = httpMethod.get(uri, headers);
+        HttpEntity entity = response.getEntity();
+        String content = EntityUtils.toString(entity);
+        return content;
+    }
+
+    public String updateNoteById(int id, AccessToken token) throws IOException {
+        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
         Map<String, String> headers = new HashMap<>();
         String json = "{\"content\":\"TEST\"}";
         headers.put("Content-type", "application/json");
-        headers.put("Authorization", "Bearer" + user.getToken());
-        CloseableHttpResponse response = HttpMethods.put(json, uri, headers);
+        headers.put("Authorization", "Bearer" + token.getAccess_token());
+        CloseableHttpResponse response = httpMethod.put(json, uri, headers);
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
         return content;
-
     }
 
-    public CloseableHttpResponse deleteNote(int id, User user) throws IOException {
-        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
+    public CloseableHttpResponse deleteNote(int id, AccessToken token) throws IOException {
+        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-type", "application/json");
-        headers.put("Authorization", "Bearer" + user.getToken());
-        CloseableHttpResponse response = HttpMethods.delete(uri, headers);
+        headers.put("Authorization", "Bearer" + token.getAccess_token());
+        CloseableHttpResponse response = httpMethod.delete(uri, headers);
         return response;
     }
 }

@@ -13,15 +13,15 @@ import java.util.Map;
 public class HttpMethods {
     private static CloseableHttpClient client;
 
-    public static void createClient() {
+    public void createClient() {
         client = HttpClients.createDefault();
     }
 
-    public static void closeClient() throws IOException {
+    public void closeClient() throws IOException {
         client.close();
     }
 
-    public static CloseableHttpResponse post(String json, String uri, Map<String, String> headers) throws IOException {
+    public  CloseableHttpResponse post(String json, String uri, Map<String, String> headers) throws IOException {
         HttpPost httpPost = new HttpPost(uri);
         StringEntity entity = new StringEntity(json);
         httpPost.setEntity(entity);
@@ -31,7 +31,7 @@ public class HttpMethods {
         return client.execute(httpPost);
     }
 
-    public static CloseableHttpResponse get(String uri, Map<String, String> headers) throws IOException {
+    public  CloseableHttpResponse get(String uri, Map<String, String> headers) throws IOException {
         HttpGet httpGet = new HttpGet(uri);
 
         for (String i : headers.keySet()) {
@@ -40,7 +40,7 @@ public class HttpMethods {
         return client.execute(httpGet);
     }
 
-    public static CloseableHttpResponse put(String json, String uri, Map<String, String> headers) throws IOException {
+    public  CloseableHttpResponse put(String json, String uri, Map<String, String> headers) throws IOException {
         HttpPut httpPut = new HttpPut(uri);
         StringEntity entity = new StringEntity(json);
         httpPut.setEntity(entity);
@@ -50,7 +50,7 @@ public class HttpMethods {
         return client.execute(httpPut);
     }
 
-    public static CloseableHttpResponse delete(String uri, Map<String, String> headers) throws IOException {
+    public  CloseableHttpResponse delete(String uri, Map<String, String> headers) throws IOException {
         HttpDelete httpDelete = new HttpDelete(uri);
         for (String i : headers.keySet()) {
             httpDelete.setHeader(i, headers.get(i));

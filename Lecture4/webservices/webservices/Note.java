@@ -1,51 +1,39 @@
 package webservices;
 
-public class Notes {
+public class Note {
     private int id;
     private String content;
     private String createdAt;
     private String modifiedAt;
     private int version;
 
-    public int getId() {
-        return id;
+    public Note(String content) {
+        this.content = content;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Note() {
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public String getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
     }
 
     public String getModifiedAt() {
         return modifiedAt;
     }
 
-    public void setModifiedAt(String modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
-
     public int getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
-        this.version = version;
-    }
 
     @Override
     public String toString() {
