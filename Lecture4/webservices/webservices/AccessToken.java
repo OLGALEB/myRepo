@@ -5,21 +5,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AccessToken {
     @JsonProperty("access_token")
     private String accessToken;
-    @JsonProperty ("token_type")
+    @JsonProperty("token_type")
     private String tokenType;
     @JsonProperty("expires_in")
     private int expiresIn;
     private String scope;
 
-    public String getAccess_token() {
+    public String getAccessToken() {
         return accessToken;
     }
 
-    public String getToken_type() {
+    public String getTokenType() {
         return tokenType;
     }
 
-    public int getExpires_in() {
+    public int getExpiresIn() {
         return expiresIn;
     }
 

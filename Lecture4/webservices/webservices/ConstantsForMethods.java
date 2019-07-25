@@ -12,7 +12,6 @@ public enum ConstantsForMethods {
 
         this.endpoint = endpoint;
     }
-
     public String getEndpoint() {
         return endpoint;
     }

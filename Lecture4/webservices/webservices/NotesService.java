@@ -10,9 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NotesService {
-    private static String urlBeginning = "https://taschool-notes-service.herokuapp.com";
-    HttpMethods httpMethod;
-    ObjectMapper objectMapper;
+    private final HttpMethods httpMethod;
+    private final ObjectMapper objectMapper;
 
     public NotesService(HttpMethods httpMethod, ObjectMapper objectMapper) {
         this.httpMethod = httpMethod;
@@ -21,7 +20,7 @@ public class NotesService {
 
     public Note createNote(String token, Note note) throws IOException {
 
-        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint();
+        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint();
         String json = objectMapper.writeValueAsString(note);
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-type", "application/json");
@@ -34,7 +33,7 @@ public class NotesService {
 
     public String getAllCreatedNotes(String token) throws IOException {
 
-        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint();
+        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint();
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-type", "application/json");
         headers.put("Authorization", "Bearer" + token);
@@ -44,9 +43,8 @@ public class NotesService {
         return content;
     }
 
-
     public String getNoteById(int id, String token) throws IOException {
-        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
+        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-type", "application/json");
         headers.put("Authorization", "Bearer" + token);
@@ -58,18 +56,18 @@ public class NotesService {
 
     public Note updateNoteById(int id, String token, Note note) throws IOException {
         String json = objectMapper.writeValueAsString(note);
-        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
+        String path = ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-type", "application/json");
         headers.put("Authorization", "Bearer" + token);
-        CloseableHttpResponse response = httpMethod.put(json, uri, headers);
+        CloseableHttpResponse response = httpMethod.put(json, path, headers);
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
         return objectMapper.readValue(content, Note.class);
     }
 
     public CloseableHttpResponse deleteNote(int id, String token) throws IOException {
-        String uri = urlBeginning + ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
+        String uri = ConstantsForMethods.GET_ALL_NOTES.getEndpoint() + "/" + id;
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-type", "application/json");
         headers.put("Authorization", "Bearer" + token);

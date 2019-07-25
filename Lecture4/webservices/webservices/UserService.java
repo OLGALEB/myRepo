@@ -10,9 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserService {
-    private static String urlBeginning = "https://taschool-notes-service.herokuapp.com";
-    HttpMethods httpMethod;
-    ObjectMapper objectMapper;
+    private final HttpMethods httpMethod;
+    private final ObjectMapper objectMapper;
 
     public UserService(HttpMethods httpMethod, ObjectMapper objectMapper) {
         this.httpMethod = httpMethod;
@@ -20,18 +19,18 @@ public class UserService {
     }
 
     public User createUser(User user) throws IOException {
-        String uri = urlBeginning + ConstantsForMethods.REGISTER_USER.getEndpoint();
+        String path = ConstantsForMethods.REGISTER_USER.getEndpoint();
         String json = objectMapper.writeValueAsString(user);
         Map<String, String> headers = new HashMap<>();
         headers.put("Accept", "application/json");
         headers.put("Content-type", "application/json");
-        CloseableHttpResponse response = httpMethod.post(json, uri, headers);
+        CloseableHttpResponse response = httpMethod.post(json, path, headers);
         String userResponse = EntityUtils.toString(response.getEntity());
         return objectMapper.readValue(userResponse, User.class);
     }
 
     public AccessToken tokenTake(User user) throws IOException {
-        String uri = urlBeginning + ConstantsForMethods.GET_TOKEN.getEndpoint();
+        String uri = ConstantsForMethods.GET_TOKEN.getEndpoint();
         String json = "?grant_type=password&scope=read+write&username=" + user.getEmail() + "&password=" + user.getPassword();
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "Basic Y2xpZW50OnNlY3JldA==");
