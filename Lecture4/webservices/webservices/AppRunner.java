@@ -1,30 +1,36 @@
 package webservices;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 
 public class AppRunner {
 
-    public static void main(String[] args) throws IOException {
-        HttpMethods workWithClient = new HttpMethods();
+    private static HttpMethods httpMethod = new HttpMethods();
+    private static ObjectMapper objectMapper = new ObjectMapper();
 
-        workWithClient.createClient();
+    public static void main(String[] args) throws IOException {
+
+        httpMethod.createClient();
 
         User user = new User(String.format("test%s@test.com", System.currentTimeMillis()), "test234");
 
-        UserService userAuthAndRegistration = new UserService();
+        UserService userAuthAndRegistration = new UserService(httpMethod, objectMapper);
         System.out.println("Created user: " + userAuthAndRegistration.createUser(user));
+
         AccessToken userToken = userAuthAndRegistration.tokenTake(user);
+        String userTokenField = userToken.getAccess_token();
 
         Note noteToCreate = new Note("test");
-        NotesService notesService = new NotesService();
+        NotesService notesService = new NotesService(httpMethod, objectMapper);
 
-        Note note = notesService.createNote(userToken, noteToCreate);
+        Note note = notesService.createNote(userTokenField, noteToCreate);
         System.out.println("Сreated Note1" + note);
-        System.out.println("Сreated Note2" + notesService.createNote(userToken, noteToCreate));
-        System.out.println("Get all notesService:" + notesService.getAllCreatedNotes(userToken));
-        System.out.println("Get notesService by id:" + notesService.getNoteById(note.getId(), userToken));
-        System.out.println("Update note by id:" + notesService.updateNoteById(note.getId(), userToken));
-        System.out.println("Delete note by id: " + notesService.deleteNote(note.getId(), userToken));
-        workWithClient.closeClient();
+        System.out.println("Сreated Note2" + notesService.createNote(userTokenField, noteToCreate));
+        System.out.println("Get all notesService:" + notesService.getAllCreatedNotes(userTokenField));
+        System.out.println("Get notesService by id:" + notesService.getNoteById(note.getId(), userTokenField));
+        System.out.println("Update note by id:" + notesService.updateNoteById(note.getId(), userTokenField, note));
+        System.out.println("Delete note by id: " + notesService.deleteNote(note.getId(), userTokenField));
+        httpMethod.closeClient();
     }
 }

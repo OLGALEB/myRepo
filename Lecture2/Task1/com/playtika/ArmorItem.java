@@ -1,13 +1,17 @@
-package com.playtika;
+package Task1.com.playtika;
 
-public class ArmorItem {
+import java.io.Serializable;
+
+public class ArmorItem implements Serializable {
 
     private final double cost;
     private final int weight;
+    private final String color;
 
-    ArmorItem(double cost, int weight) {
+    public ArmorItem(double cost, int weight, String color) {
         this.cost = cost;
         this.weight = weight;
+        this.color = color;
     }
 
     public double getCost() {
@@ -18,6 +22,9 @@ public class ArmorItem {
         return weight;
     }
 
+    public String getColor() {
+        return this.color;
+    }
 
     @Override
     public String toString() {

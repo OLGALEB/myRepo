@@ -1,21 +1,26 @@
 package webservices;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AccessToken {
-    private String access_token;
-    private String token_type;
-    private int expires_in;
+    @JsonProperty("access_token")
+    private String accessToken;
+    @JsonProperty ("token_type")
+    private String tokenType;
+    @JsonProperty("expires_in")
+    private int expiresIn;
     private String scope;
 
     public String getAccess_token() {
-        return access_token;
+        return accessToken;
     }
 
     public String getToken_type() {
-        return token_type;
+        return tokenType;
     }
 
     public int getExpires_in() {
-        return expires_in;
+        return expiresIn;
     }
 
     public String getScope() {
