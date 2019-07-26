@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test suite">
+    <test name="FactoryTest">
+
+        <classes>
+            <class name="FactoryTest"></class>
+        </classes>
+
+    </test>
+
+    <test name="TestForOtherMethods">
+        <classes>
+            <class name="FactoryTest"></class>
+            <class name="TestForOtherMethods"></class>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="Listener"/>
+    </listeners>
+</suite>

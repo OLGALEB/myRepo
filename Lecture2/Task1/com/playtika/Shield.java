@@ -1,23 +1,22 @@
 package playtika;
 
-public class Boot extends ArmorItem {
+public class Shield extends ArmorItem {
 
-    private final int protectionLevel;
-    static final int DEFAULT = 10;
+    private int protectionLevel;
+    static final int DEFAULT = 5;
 
-    public Boot(int protectionLevel, double cost, int weight, String color) {
+    public Shield(int protectionLevel, double cost, int weight, String color) {
         super(cost, weight, color);
         this.protectionLevel = protectionLevel;
     }
 
-    public Boot(double cost, int weight, String color) {
-
+    public Shield(double cost, int weight, String color) {
         this(DEFAULT, cost, weight, color);
     }
 
     @Override
     public String toString() {
-        return "Boot{" +
+        return "Shield{" +
                 "color='" + getColor() + '\'' +
                 ", protectionLevel=" + protectionLevel +
                 ", cost=" + getCost() +
