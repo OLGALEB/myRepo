@@ -1,6 +1,8 @@
 package com.playtika;
 
-public class CostRange {
+import java.io.Serializable;
+
+public class CostRange implements Serializable {
     private final int minCost;
     private final int maxCost;
 
