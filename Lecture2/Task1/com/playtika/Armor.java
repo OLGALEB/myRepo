@@ -13,7 +13,12 @@ public class Armor {
         this.armorItems.addAll(armorItems);
     }
 
-    int getWeight() {
+    public Armor() {
+
+    }
+
+    public int getWeight() {
+
         int armorWeight = 0;
         for (ArmorItem armorItem : armorItems) {
             armorWeight = armorWeight + armorItem.getWeight();
@@ -21,7 +26,9 @@ public class Armor {
         return armorWeight;
     }
 
-    double getCost() {
+
+
+    public double getCost() {
         double armorCost = 0;
         for (ArmorItem armorItem : armorItems) {
             armorCost = armorCost + armorItem.getCost();
