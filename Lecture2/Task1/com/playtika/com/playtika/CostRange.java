@@ -1,6 +1,6 @@
-package playtika;
+package com.playtika;
 
-        import java.io.Serializable;
+import java.io.Serializable;
 
 public class CostRange implements Serializable {
     private final int minCost;

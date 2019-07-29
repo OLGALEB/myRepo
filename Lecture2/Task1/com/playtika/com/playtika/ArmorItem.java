@@ -1,4 +1,4 @@
-package playtika;
+package com.playtika;
 
 import java.io.Serializable;
 

@@ -1,9 +1,9 @@
-package playtika;
+package com.playtika;
 
 public class Boot extends ArmorItem {
 
     private final int protectionLevel;
-    static final int DEFAULT = 10;
+    static final int DEFAULT_PROTECTION_LEVEL = 10;
 
     public Boot(int protectionLevel, double cost, int weight, String color) {
         super(cost, weight, color);
@@ -12,7 +12,7 @@ public class Boot extends ArmorItem {
 
     public Boot(double cost, int weight, String color) {
 
-        this(DEFAULT, cost, weight, color);
+        this(DEFAULT_PROTECTION_LEVEL, cost, weight, color);
     }
 
     @Override

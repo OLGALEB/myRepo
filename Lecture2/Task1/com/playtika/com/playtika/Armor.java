@@ -1,4 +1,4 @@
-package playtika;
+package com.playtika;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,13 +13,20 @@ public class Armor implements Serializable {
         this.armorItems.addAll(armorItems);
     }
 
+    public Armor() {
+
+    }
+
     public int getWeight() {
+
         int armorWeight = 0;
         for (ArmorItem armorItem : armorItems) {
             armorWeight = armorWeight + armorItem.getWeight();
         }
         return armorWeight;
     }
+
+
 
     public double getCost() {
         double armorCost = 0;
