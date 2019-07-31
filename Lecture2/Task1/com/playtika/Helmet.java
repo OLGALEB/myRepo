@@ -1,4 +1,4 @@
-package playtika;
+package com.playtika;
 
 public class Helmet extends ArmorItem {
 

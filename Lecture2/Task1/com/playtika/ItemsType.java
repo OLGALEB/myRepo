@@ -1,4 +1,4 @@
-package playtika;
+package com.playtika;
 
 public enum  ItemsType {
     BOOT,

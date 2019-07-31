@@ -1,17 +1,18 @@
+import com.playtika.Knight;
+import com.playtika.Main;
 import org.assertj.core.api.Assertions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import playtika.Knight;
-import playtika.Main;
 
 import java.io.IOException;
 
-import static playtika.Main.buildArmor;
+import static com.playtika.Main.buildArmor;
 
 public class TestForOtherMethods extends Assert {
     @BeforeClass
     public void beforeClass() {
+
         System.out.println("Test starts:");
     }
 
@@ -31,7 +32,7 @@ public class TestForOtherMethods extends Assert {
 
      @Test
     public void testWriteToFile () throws IOException, ClassNotFoundException {
-        Knight knight= new Knight(23,"Art",buildArmor(),"soldier"); 
+         Knight knight= new Knight(23,"Art",buildArmor(),"soldier");
          String fileName = "Knight.txt";
          Main.writeToFile(knight, fileName);
 

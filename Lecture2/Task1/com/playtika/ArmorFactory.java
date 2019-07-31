@@ -1,4 +1,5 @@
-package playtika;
+package com.playtika;
+
 public class ArmorFactory  {
     public static ArmorItem buildArmorItem(ItemsType itemsType, int weight, double cost, String color) throws UnknownArmorTypeException {
         ArmorItem toReturn = null;

@@ -1,4 +1,4 @@
-package playtika;
+package com.playtika;
 
 import java.io.*;
 import java.util.Arrays;
@@ -29,11 +29,11 @@ public class Main {
         try {
             System.out.println(readKnightInfoFromTxtFile("Knight.txt"));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Problem  with reading from file:  " + e.getMessage());
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.err.println("Lost file path: " + e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Incomprehensible problems were occurred: " + e.getMessage());
         }
 
         String knightWithOutHelmet = changeInKnightInfoViaRegex(knightInfo);
@@ -99,7 +99,7 @@ public class Main {
         return stringBuilder.toString();
     }
 
-    public static void writeToFile(Object text, String fileName)  {
+    public static void writeToFile(Object text, String fileName) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(fileName);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(text);

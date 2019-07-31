@@ -1,9 +1,9 @@
-package playtika;
+package com.playtika;
 
 public class Cuirass extends ArmorItem {
 
     private int protectionLevel;
-    static final int DEFAULT = 15;
+    static final int DEFAULT_PROTECTION_LEVEL = 15;
 
     public Cuirass(int protectionLevel, double cost, int weight, String color) {
         super(cost, weight, color);
@@ -11,7 +11,7 @@ public class Cuirass extends ArmorItem {
     }
 
     public Cuirass(double cost, int weight, String color) {
-        this(DEFAULT, cost, weight, color);
+        this(DEFAULT_PROTECTION_LEVEL, cost, weight, color);
     }
 
     @Override

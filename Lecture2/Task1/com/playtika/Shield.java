@@ -1,9 +1,9 @@
-package playtika;
+package com.playtika;
 
 public class Shield extends ArmorItem {
 
     private int protectionLevel;
-    static final int DEFAULT = 5;
+    static final int DEFAULT_PROTECTION_LEVEL = 5;
 
     public Shield(int protectionLevel, double cost, int weight, String color) {
         super(cost, weight, color);
@@ -11,7 +11,7 @@ public class Shield extends ArmorItem {
     }
 
     public Shield(double cost, int weight, String color) {
-        this(DEFAULT, cost, weight, color);
+        this(DEFAULT_PROTECTION_LEVEL, cost, weight, color);
     }
 
     @Override

@@ -2,9 +2,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import playtika.ArmorFactory;
-import playtika.ArmorItem;
-import playtika.ItemsType;
+import com.playtika.ArmorFactory;
+import com.playtika.ArmorItem;
+import com.playtika.ItemsType;
 
 public class FactoryTest extends Assert {
 
