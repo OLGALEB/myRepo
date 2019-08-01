@@ -1,10 +1,11 @@
+import com.playtika.ArmorFactory;
+import com.playtika.ArmorItem;
+import com.playtika.ItemsType;
+import com.playtika.UnknownArmorTypeException;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import com.playtika.ArmorFactory;
-import com.playtika.ArmorItem;
-import com.playtika.ItemsType;
 
 public class FactoryTest extends Assert {
 
@@ -33,8 +34,10 @@ public class FactoryTest extends Assert {
         Assert.assertEquals(color, armorItem.getColor());
     }
 
-    @Test(expectedExceptions = RuntimeException.class)
+
+    @Test(expectedExceptions = UnknownArmorTypeException.class)
     public void testException() {
+
         ArmorItem armorItem = ArmorFactory.buildArmorItem(null, 31, 45, "red");
     }
 }

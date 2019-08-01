@@ -16,6 +16,6 @@
     </test>
 
     <listeners>
-        <listener class-name="Listener"/>
+        <listener class-name="ListenerForTestSuit"/>
     </listeners>
 </suite>

@@ -1,7 +1,11 @@
 package com.playtika;
 
-public class ArmorFactory  {
+public class ArmorFactory {
     public static ArmorItem buildArmorItem(ItemsType itemsType, int weight, double cost, String color) throws UnknownArmorTypeException {
+        if (itemsType == null)
+        {
+            throw new UnknownArmorTypeException("item is null!");
+        }
         ArmorItem toReturn = null;
         switch (itemsType) {
             case BOOT:
