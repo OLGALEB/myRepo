@@ -60,7 +60,6 @@ public class TestOzBy {
     }
 
     public void searchBook(String bookName) {
-
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(TOP_SEARCH_BAR))).sendKeys(bookName);
 
@@ -74,7 +73,6 @@ public class TestOzBy {
     }
 
     public void checkBasket() {
-
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CHECK_BASKET))).click();
     }
