@@ -1,12 +1,17 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestOzBy {
@@ -60,7 +65,7 @@ public class TestOzBy {
     }
 
     public void searchBook(String bookName) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(TOP_SEARCH_BAR))).sendKeys(bookName);
 
         driver.findElement(By.className(CLICK_SEARCH)).click();
@@ -73,7 +78,13 @@ public class TestOzBy {
     }
 
     public void checkBasket() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CHECK_BASKET))).click();
+        List<WebElement> allBooksLinks = driver.findElements(By.xpath(CHECK_BASKET));
+        Iterator<WebElement> listOfBookInBasket = allBooksLinks.iterator();
+        while (listOfBookInBasket.hasNext()) {
+            listOfBookInBasket.next();
+            Assert.assertTrue(true, BOOK_NAME);
+        }
     }
 }
