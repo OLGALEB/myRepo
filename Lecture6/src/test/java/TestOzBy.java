@@ -1,5 +1,4 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,11 +29,12 @@ public class TestOzBy {
     private final String CLICK_ON_BASKET = "i-button__icon";
     private final String CHECK_BASKET = "//a[contains(.,'Корзина')]";
 
+
     @BeforeClass
-    public void beforeClass() throws InterruptedException {
+    public void beforeClass() {
         System.setProperty(PROPERTY_DRIVER, DRIVER_EXE);
         driver = new ChromeDriver();
-        implicitWait();
+        driver.manage().timeouts().implicitlyWait(TIMEOUT, TimeUnit.SECONDS);
     }
 
     @AfterClass
@@ -43,15 +43,15 @@ public class TestOzBy {
     }
 
     @Test
-    private void loginSelectAndAddBookToBasket() throws InterruptedException {
+    private void loginSelectAndAddBookToBasket() {
         driver.get(URL);
         loginToSite();
-        searchBook();
+        searchBook(BOOK_NAME);
         putInBasket();
         checkBasket();
     }
 
-    public void loginToSite() throws InterruptedException, NoSuchElementException {
+    public void loginToSite() {
         driver.findElement(By.className(LOGIN_BAR)).click();
         driver.findElement(By.id(LOGIN_BY_EMAIL)).click();
         driver.findElement(By.name(EMAIL_FIELD)).sendKeys(MY_EMAIL);
@@ -59,10 +59,10 @@ public class TestOzBy {
         driver.findElement(By.cssSelector(LOGIN_CLICK)).click();
     }
 
-    public void searchBook() {
+    public void searchBook(String bookName) {
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(TOP_SEARCH_BAR))).sendKeys(BOOK_NAME);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(TOP_SEARCH_BAR))).sendKeys(bookName);
 
         driver.findElement(By.className(CLICK_SEARCH)).click();
     }
@@ -77,9 +77,5 @@ public class TestOzBy {
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CHECK_BASKET))).click();
-    }
-
-    private void implicitWait() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(TIMEOUT, TimeUnit.SECONDS);
     }
 }
