@@ -48,8 +48,7 @@ public class Armor implements Serializable {
     public List<ArmorItem> sortedByCost() {
         List<ArmorItem> sortedValue = new ArrayList<>();
         sortedValue.addAll(armorItems);
-        sortedValue.sort(Comparator.comparingDouble(i -> i.getCost())
-        );
+        sortedValue.sort(Comparator.comparingDouble(ArmorItem::getCost));
         return sortedValue;
     }
 

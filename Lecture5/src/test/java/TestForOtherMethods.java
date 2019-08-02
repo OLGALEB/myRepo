@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.playtika.Main.buildArmor;
@@ -25,7 +26,6 @@ public class TestForOtherMethods {
 
     }
 
-
     @Test
     public void testToGetTotalCostSum() {
         double totalCostSum = 485.0;
@@ -40,20 +40,14 @@ public class TestForOtherMethods {
         listWithSortedItem.add(ArmorFactory.buildArmorItem(ItemsType.SWORD, 125, 155, "silver"));
 
         Assertions.assertThat(listWithSortedItem).isEqualTo(buildArmor().getByCost(100, 155));
+        Assertions.assertThat(listWithSortedItem).isEqualTo(buildArmor().getByCost(125, 10000000));
+        Assertions.assertThat(listWithSortedItem).isNotEqualTo(buildArmor().getByCost(154, 155));
     }
 
     @Test
     public void testToGetSortedByCostArmor() {
-        List<ArmorItem> sortedByCostList = new ArrayList<>();
-        sortedByCostList.add(ArmorFactory.buildArmorItem(ItemsType.BOOT, 25, 50, "black"));
-        sortedByCostList.add(ArmorFactory.buildArmorItem(ItemsType.HELMET, 35, 55, "gold"));
-        sortedByCostList.add(ArmorFactory.buildArmorItem(ItemsType.CUIRASS, 55, 100, "gold"));
-        sortedByCostList.add(ArmorFactory.buildArmorItem(ItemsType.SHIELD, 115, 125, "red"));
-        sortedByCostList.add(ArmorFactory.buildArmorItem(ItemsType.SWORD, 125, 155, "silver"));
-
-        Assertions.assertThat(sortedByCostList).isEqualTo(buildArmor().sortedByCost());
+        Assertions.assertThat(buildArmor().sortedByCost()).isSortedAccordingTo((Comparator.comparingDouble(ArmorItem::getCost)));
     }
-
 
     @Test
     public void testWriteAndReadFile() throws IOException, ClassNotFoundException {
