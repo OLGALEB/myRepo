@@ -1,3 +1,4 @@
+
 package com.playtika;
 
 public class UnknownArmorTypeException extends RuntimeException {

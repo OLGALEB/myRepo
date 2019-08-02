@@ -25,7 +25,6 @@ public class Main {
         writeToFile(firstKnight, "Knight.txt");
         writeToFile(sortedByCost, "SortedByCostKnight.txt");
 
-
         try {
             System.out.println(readKnightInfoFromTxtFile("Knight.txt"));
         } catch (IOException e) {
@@ -38,17 +37,19 @@ public class Main {
 
         String knightWithOutHelmet = changeInKnightInfoViaRegex(knightInfo);
         System.out.println("Knight with out Helmet: " + knightWithOutHelmet);
+
     }
 
     public static Armor buildArmor() {
         List<ArmorItem> armorList = Arrays.asList(
-                ArmorFactory.buildArmorItem(ItemsType.BOOT, 25, 50, "black"),
                 ArmorFactory.buildArmorItem(ItemsType.CUIRASS, 55, 100, "gold"),
-                ArmorFactory.buildArmorItem(ItemsType.HELMET, 35, 55, "gold"),
+                ArmorFactory.buildArmorItem(ItemsType.BOOT, 25, 50, "black"),
                 ArmorFactory.buildArmorItem(ItemsType.SHIELD, 115, 125, "red"),
+                ArmorFactory.buildArmorItem(ItemsType.HELMET, 35, 55, "gold"),
                 ArmorFactory.buildArmorItem(ItemsType.SWORD, 125, 155, "silver")
         );
         return new Armor(armorList);
+
     }
 
     private static CostRange collectUserInput() {
@@ -98,6 +99,7 @@ public class Main {
         }
         return stringBuilder.toString();
     }
+
 
     public static void writeToFile(Object text, String fileName) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(fileName);
