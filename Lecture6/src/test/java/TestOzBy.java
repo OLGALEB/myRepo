@@ -28,7 +28,7 @@ public class TestOzBy {
     private final String CLICK_SEARCH = "top-panel__search__btn";
     private final String CLICK_ON_ELEMENT = "item-type-card";
     private final String CLICK_ON_BASKET = "i-button__icon";
-    private final String CHECK_BASKET = "//*[@id=\"top-page\" or @name='Корзина']";
+    private final String CHECK_BASKET = "//a[contains(.,'Корзина')]";
 
     @BeforeClass
     public void beforeClass() throws InterruptedException {
