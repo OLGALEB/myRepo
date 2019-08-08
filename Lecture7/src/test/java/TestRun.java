@@ -23,7 +23,6 @@ public class TestRun {
         gridOfGoods = new GridOfGoods(driverManager.getDriver());
         bookPage = new BookPage(driverManager.getDriver());
         basketPage = new BasketPage(driverManager.getDriver());
-
     }
 
     @AfterMethod
