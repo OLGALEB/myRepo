@@ -60,7 +60,6 @@ public class HeaderForm {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("top-s"))).sendKeys(bookName);
         clickSearch.click();
-
     }
 
     public void clickBasket() {
