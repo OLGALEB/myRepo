@@ -65,6 +65,5 @@ public class HeaderForm {
     public void clickBasket() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(.,'Корзина')]"))).click();
-
     }
 }
