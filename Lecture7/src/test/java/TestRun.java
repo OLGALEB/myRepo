@@ -7,7 +7,6 @@ public class TestRun {
     private static final String MY_EMAIL = "lebedevaolga021@gmail.com";
     private static final String MY_PASSWORD = "wPdAp9";
     private static final String BOOK_NAME = "Нейромант (м)";
-
     private HomePage homePage;
     private BookPage bookPage;
     private DriverManager driverManager;

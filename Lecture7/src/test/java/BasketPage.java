@@ -16,7 +16,7 @@ public class BasketPage extends Page {
 
     private static final long TIMEOUT = 1;
 
-    @FindBy(xpath = "//a[contains(.,'Корзина')]")
+        @FindBy(xpath = "//a[contains(.,'Корзина')]")
     @CacheLookup
     private WebElement checkBasket;
     @FindBy(xpath = "//a[contains(.,'Нейромант (м)')]")
@@ -35,6 +35,7 @@ public class BasketPage extends Page {
     }
 
     public void checkBasket(String bookName) {
+
         assertThat(getListOfBooks()).hasSize(1).contains(bookName);
     }
 }
