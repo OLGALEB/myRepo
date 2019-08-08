@@ -12,7 +12,6 @@ public class GridOfGoods extends Page {
         super(webDriver);
     }
 
-
     public void clickOnElementFromGrid() {
         putItemFromGrid.click();
     }
