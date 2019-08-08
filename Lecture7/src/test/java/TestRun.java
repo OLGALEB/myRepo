@@ -24,6 +24,7 @@ public class TestRun {
         bookPage = new BookPage(driverManager.getDriver());
         basketPage = new BasketPage(driverManager.getDriver());
     }
+
     @AfterMethod
     public void afterClass() {
         driverManager.getDriver().quit();
