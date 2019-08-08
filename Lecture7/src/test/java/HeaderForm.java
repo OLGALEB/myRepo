@@ -53,7 +53,6 @@ public class HeaderForm {
         emailField.sendKeys(email);
         passwordField.sendKeys(password);
         loginConfirm.click();
-
     }
 
     public void searchBook(String bookName) {
