@@ -39,5 +39,6 @@ public class TestRun {
         bookPage.putBookInBasket();
         headerForm.clickBasket();
         basketPage.checkBasket(BOOK_NAME);
+
     }
 }
