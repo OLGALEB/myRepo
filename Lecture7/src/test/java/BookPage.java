@@ -6,15 +6,13 @@ import org.openqa.selenium.support.FindBy;
 public class BookPage extends Page {
 
     @FindBy(className = "i-button__icon")
-    @CacheLookup
     private WebElement putBookInBasket;
 
     public BookPage(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public void putBookInBasket() {
-
+    public void putItemInBasket() {
         putBookInBasket.click();
     }
 }
