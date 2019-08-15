@@ -16,7 +16,7 @@ public class DriverManager {
     }
 
     public void driverClose (){
-    driver.quit();
+        driver.quit();
     }
 
     public WebDriver getDriver() {
