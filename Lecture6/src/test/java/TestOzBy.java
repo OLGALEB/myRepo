@@ -36,7 +36,6 @@ public class TestOzBy {
     private static final String CHECK_BASKET = "//a[contains(.,'Корзина')]";
     private static final String BOOK_IN_BASKET = "//a[contains(.,'Нейромант (м)')]";
 
-
     @BeforeClass
     public void beforeClass() {
         System.setProperty(PROPERTY_DRIVER, DRIVER_NAME);
