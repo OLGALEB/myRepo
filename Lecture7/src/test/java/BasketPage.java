@@ -21,6 +21,7 @@ public class BasketPage extends Page {
                 .collect(Collectors.toList());
     }
 
+
     public void checkSelectedItemLocateInBasket(String bookName, int basketSize) {
         assertThat(getListOfBooks(bookName)).hasSize(basketSize).contains(bookName);
     }
