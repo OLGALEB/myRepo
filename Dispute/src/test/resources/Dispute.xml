@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notification>
+    <kind>action_placeholder</kind>
+    <timestamp type="datetime">2019-09-05T00:35:31Z</timestamp>
+    <subject>
+        <dispute>
+            <id>frg7mk2xc5qbgsgk</id>
+            <global-id>ZGlzcHV0ZV9mcmc3bWsyeGM1cWJnc2dr</global-id>
+            <amount>19.99</amount>
+            <amount-disputed>amount_placeholder</amount-disputed>
+            <amount-won>0.00</amount-won>
+            <case-number>CB327265571216</case-number>
+            <created-at type="datetime">2019-09-05T00:34:49Z</created-at>
+            <currency-iso-code>currency_code_placeholder</currency-iso-code>
+            <date-opened type="date">2019-09-05</date-opened>
+            <date-won nil="true"/>
+            <processor-comments nil="true"/>
+            <kind>dispute_type_placeholder</kind>
+            <merchant-account-id>PlaytikaSantaMonicaHoldingsLLC_instant</merchant-account-id>
+            <reason>dispute_reason_placeholder</reason>
+            <reason-code nil="true"/>
+            <reason-description nil="true"/>
+            <received-date type="date">2019-09-05</received-date>
+            <reference-number nil="true"/>
+            <reply-by-date type="date">2019-09-14</reply-by-date>
+            <status>open</status>
+            <updated-at type="datetime">2019-09-05T00:34:50Z</updated-at>
+            <original-dispute-id>fxdqmf6y9hd25kfz</original-dispute-id>
+            <evidence type="array"/>
+            <status-history type="array">
+                <status-history>
+                    <disbursement-date nil="true"/>
+                    <effective-date type="date">2019-09-05</effective-date>
+                    <status>open</status>
+                    <timestamp type="datetime">2019-09-05T00:34:50Z</timestamp>
+                </status-history>
+            </status-history>
+            <transaction>
+                <id>g7a1x287</id>
+                <amount>19.99</amount>
+                <created-at>2019-09-04T14:09:59Z</created-at>
+                <order-id>transaction_id_placeholder</order-id>
+                <purchase-order-number nil="true"/>
+                <payment-instrument-subtype>payment_type_placeholder</payment-instrument-subtype>
+            </transaction>
+        </dispute>
+    </subject>
+</notification>
